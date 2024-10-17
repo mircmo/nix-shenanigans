@@ -1,5 +1,5 @@
 {
-  description = "Example Darwin system flake";
+  description = "Mirco's system flake";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
@@ -12,9 +12,21 @@
     configuration = { pkgs, ... }: {
       # List packages installed in system profile. To search by name, run:
       # $ nix-env -qaP | grep wget
-      environment.systemPackages = [ 
+      environment.systemPackages =
+        [ 
 	  pkgs.vim
+	  pkgs.obsidian
+          pkgs.spotify  
       ];
+
+      nixpkgs.config.allowUnfree = true;
+      system.defaults.finder.AppleShowAllFiles = true;
+      system.defaults.dock.autohide = true;
+      system.defaults.dock.tilesize = 48;
+      system.keyboard.enableKeyMapping = true;
+      system.keyboard.swapLeftCtrlAndFn = true;
+      system.defaults.trackpad.TrackpadThreeFingerDrag = true;
+      system.defaults.NSGlobalDomain."com.apple.trackpad.scaling" = 2.5;
 
       # Auto upgrade nix package and the daemon service.
       services.nix-daemon.enable = true;
