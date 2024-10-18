@@ -29,12 +29,14 @@
             magnification = true;
             largesize = 48;
             show-recents = false;
-            persistent-apps = [
-              "/System/Applications/Utilities/Terminal.app"
-              pkgs.obsidian
-              pkgs.spotify
-              pkgs.vscode
-            ];
+            
+            # Somehow this breaks darwin rebuild ??!?
+            # persistent-apps = [
+            #   # "/System/Applications/Utilities/Terminal.app"
+            #   pkgs.obsidian
+            #   pkgs.spotify
+            #   pkgs.vscode
+            # ];
           };
           finder = {
             AppleShowAllFiles = true;
@@ -44,7 +46,6 @@
           };
           NSGlobalDomain."com.apple.trackpad.scaling" = 2.5;
           trackpad.TrackpadThreeFingerDrag = true;
-          universalaccess.closeViewScrollWheelToggle = true;
       };
 
       system.keyboard = {
