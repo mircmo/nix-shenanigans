@@ -18,6 +18,8 @@
           pkgs.spotify
           pkgs.rectangle
           pkgs.vscode
+          pkgs.rustup
+          pkgs.brave
       ];
 
       nixpkgs.config.allowUnfree = true;
@@ -29,7 +31,7 @@
             magnification = true;
             largesize = 48;
             show-recents = false;
-            
+
             # Somehow this breaks darwin rebuild ??!?
             # persistent-apps = [
             #   # "/System/Applications/Utilities/Terminal.app"
@@ -46,6 +48,7 @@
           };
           NSGlobalDomain."com.apple.trackpad.scaling" = 2.5;
           trackpad.TrackpadThreeFingerDrag = true;
+          NSGlobalDomain.AppleInterfaceStyle = "Dark";
       };
 
       system.keyboard = {
