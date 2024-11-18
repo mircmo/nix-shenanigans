@@ -3,12 +3,6 @@
       # $ nix-env -qaP | grep wget
       environment.systemPackages = [ 
           pkgs.vim
-          pkgs.obsidian
-          pkgs.spotify
-          pkgs.rectangle
-          pkgs.vscode
-          pkgs.rustup
-          pkgs.brave
       ];
 
       nixpkgs.config.allowUnfree = true;

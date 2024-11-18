@@ -19,6 +19,12 @@
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     pkgs.hello
+    pkgs.obsidian
+    pkgs.spotify
+    pkgs.rectangle
+    pkgs.vscode
+    pkgs.rustup
+    pkgs.brave
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -33,6 +39,10 @@
     #   echo "Hello, ${config.home.username}!"
     # '')
   ];
+
+  home.shellAliases = {
+    rebuild = "darwin-rebuild switch --flake ~/.config/nix-darwin";
+  };
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
@@ -65,4 +75,17 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+
+  programs.zsh = {
+    enable = true;
+    historySubstringSearch.enable = true;
+    syntaxHighlighting.enable = true;
+    oh-my-zsh = {
+      enable = true;
+      plugins = [
+        "sudo"
+      ];
+    };
+  };
+
 }
