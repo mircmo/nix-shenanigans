@@ -68,4 +68,11 @@
         name = "mirco";
         home = "/Users/mirco";
       };
+
+      homebrew = {
+        enable = true;
+        casks = [
+          "proton-mail"
+        ];
+      };
 }
