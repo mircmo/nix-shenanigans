@@ -32,6 +32,10 @@
           NSGlobalDomain."com.apple.trackpad.scaling" = 2.5;
           trackpad.TrackpadThreeFingerDrag = true;
           NSGlobalDomain.AppleInterfaceStyle = "Dark";
+          hitoolbox.AppleFnUsageType = "Show Emoji & Symbols";
+          
+          # This option somehow doesn't work
+          # universalaccess.closeViewScrollWheelToggle = true;
       };
 
       system.keyboard = {

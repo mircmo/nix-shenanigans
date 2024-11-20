@@ -16,21 +16,14 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = [
-    # # Adds the 'hello' command to your environment. It prints a friendly
-    # # "Hello, world!" when run.
-    pkgs.hello
     pkgs.obsidian
     pkgs.spotify
     pkgs.rectangle
     pkgs.vscode
     pkgs.rustup
     pkgs.brave
-
-    # # It is sometimes useful to fine-tune packages, for example, by applying
-    # # overrides. You can do that directly here, just don't forget the
-    # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
-    # # fonts?
-    # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
+    pkgs.deno
+    (pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; })
 
     # # You can also create simple shell scripts directly inside your
     # # configuration. For example, this adds a command 'my-hello' to your
@@ -78,14 +71,85 @@
 
   programs.zsh = {
     enable = true;
+    
+    # When using the arrow keys to navigate through command history, filter the results using the currently typed command
     historySubstringSearch.enable = true;
+
     syntaxHighlighting.enable = true;
     oh-my-zsh = {
       enable = true;
       plugins = [
+        # Enables double pressing of ESC-key to recall previous command from history and adding "sudo" in front of it
         "sudo"
       ];
     };
+  };
+
+  programs.vscode = {
+    enable = true;
+    extensions = [
+      pkgs.vscode-extensions.jnoortheen.nix-ide
+      pkgs.vscode-extensions.rust-lang.rust-analyzer
+      pkgs.vscode-extensions.svelte.svelte-vscode
+      pkgs.vscode-extensions.tyriar.sort-lines
+      pkgs.vscode-extensions.vscode-icons-team.vscode-icons
+      pkgs.vscode-extensions.zhuangtongfa.material-theme
+    ];
+
+    userSettings = {
+      "explorer.confirmDelete" = false;
+
+      # When no files are staged, automatically stage all changed files
+      "git.enableSmartCommit" = true;
+      
+      "git.confirmSync" = false;
+      "git.autofetch" = true;
+
+      "workbench.sideBar.location" = "right";
+      "workbench.colorTheme" = "One Dark Pro Darker";
+      "workbench.iconTheme" = "vscode-icons";
+
+      # Disable "temporarily" open files
+      "workbench.editor.enablePreview" = false;
+      
+      # Limit number of open tabs to 5
+      "workbench.editor.limit.value" = 5;
+      
+      # Don't show search input in title bar
+      "window.commandCenter" = false;
+
+      # Use font with ligatures (installed via the nerdfonts package)
+      "editor.fontLigatures" = true;
+      "editor.fontFamily" = "FiraCode Nerd Font";
+    };
+
+    keybindings = [
+      # cmd+t/cmd+w shortcut for opening/closing a terminal
+      {
+        "key" = "cmd+t";
+        "command" = "workbench.action.terminal.split";
+        "when" = "terminalFocus";
+      }
+      {
+        "key" = "cmd+w";
+        "command" = "workbench.action.terminal.killActiveTab";
+        "when" = "terminalFocus";
+      }
+
+      # cmd+2 shortcut for changing the focus to the terminal
+      {
+        "key" = "cmd+2";
+        "command" = "-workbench.action.focusSecondEditorGroup";
+      }
+      {
+        "key" = "cmd+2";
+        "command" = "workbench.action.terminal.focus";
+      }
+      {
+        "key" = "cmd+down";
+        "command" = "-workbench.action.terminal.focus";
+      }
+    ];
   };
 
 }
