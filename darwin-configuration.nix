@@ -54,9 +54,10 @@
       services.nix-daemon.enable = true;
       nix = {
         package = pkgs.nix;
-        settings.experimental-features = "nix-command flakes";
-        linux-builder.enable = true;
-        settings.trusted-users = [ "@admin" ];
+        settings = {
+          experimental-features = "nix-command flakes";
+        };
+        
       };
       # Necessary for using flakes on this system.
 
