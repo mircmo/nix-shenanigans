@@ -15,15 +15,14 @@
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages = [
-    pkgs.obsidian
-    pkgs.spotify
-    pkgs.rectangle
-    pkgs.vscode
-    pkgs.rustup
-    pkgs.brave
-    pkgs.deno
-    (pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; })
+  home.packages = with pkgs; [
+    obsidian
+    spotify
+    rectangle
+    rustup
+    brave
+    deno
+    (nerdfonts.override { fonts = [ "FiraCode" ]; })
 
     # # You can also create simple shell scripts directly inside your
     # # configuration. For example, this adds a command 'my-hello' to your
@@ -87,13 +86,13 @@
 
   programs.vscode = {
     enable = true;
-    extensions = [
-      pkgs.vscode-extensions.jnoortheen.nix-ide
-      pkgs.vscode-extensions.rust-lang.rust-analyzer
-      pkgs.vscode-extensions.svelte.svelte-vscode
-      pkgs.vscode-extensions.tyriar.sort-lines
-      pkgs.vscode-extensions.vscode-icons-team.vscode-icons
-      pkgs.vscode-extensions.zhuangtongfa.material-theme
+    extensions = with pkgs.vscode-extensions; [
+      jnoortheen.nix-ide
+      rust-lang.rust-analyzer
+      svelte.svelte-vscode
+      tyriar.sort-lines
+      vscode-icons-team.vscode-icons
+      zhuangtongfa.material-theme
     ];
 
     userSettings = {
