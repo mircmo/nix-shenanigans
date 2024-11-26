@@ -84,17 +84,14 @@
     };
   };
 
+  programs.git = {
+    enable = true;
+    userEmail = "61457049+mircmo@users.noreply.github.com";
+    userName = "Mirco";
+  };
+
   programs.vscode = {
     enable = true;
-    extensions = with pkgs.vscode-extensions; [
-      jnoortheen.nix-ide
-      rust-lang.rust-analyzer
-      svelte.svelte-vscode
-      tyriar.sort-lines
-      vscode-icons-team.vscode-icons
-      zhuangtongfa.material-theme
-    ];
-
     userSettings = {
       "explorer.confirmDelete" = false;
 
@@ -120,10 +117,23 @@
       # Use font with ligatures (installed via the nerdfonts package)
       "editor.fontLigatures" = true;
       "editor.fontFamily" = "FiraCode Nerd Font";
+
+      # Don't show welcome tab in new window
+      "workbench.startupEditor" = "none";
     };
 
+    extensions = with pkgs.vscode-extensions; [
+      eamodio.gitlens
+      jnoortheen.nix-ide
+      rust-lang.rust-analyzer
+      tamasfe.even-better-toml
+      tyriar.sort-lines
+      vscode-icons-team.vscode-icons
+      zhuangtongfa.material-theme
+    ];
+
     keybindings = [
-      # cmd+t/cmd+w shortcut for opening/closing a terminal
+      # cmd+t/cmd+w shortcut for splitting/closing a terminal, when focus is in terminal area
       {
         "key" = "cmd+t";
         "command" = "workbench.action.terminal.split";
