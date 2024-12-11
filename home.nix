@@ -122,6 +122,9 @@
       "workbench.startupEditor" = "none";
     };
 
+    # I would prefer for this option to be enabled, but this requires me to manually delete some files to get a working VS Code
+    mutableExtensionsDir = false;
+
     extensions = with pkgs.vscode-extensions; [
       eamodio.gitlens
       jnoortheen.nix-ide
@@ -130,6 +133,25 @@
       tyriar.sort-lines
       vscode-icons-team.vscode-icons
       zhuangtongfa.material-theme
+    ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+      {
+         name = "lldb-dap";
+         publisher = "llvm-vs-code-extensions";
+         version = "0.2.8";
+         sha256 = "sha256-wQkJd2Ip93/YmDE43gEevKeiIWH0pKJwGhsiYl1x9Jo=";
+      }
+      {
+         name = "vscode-mojo";
+         publisher = "modular-mojotools";
+         version = "24.5.6";
+         sha256 = "sha256-gTHQazBiTcfWuFjuHVEE8/OiXG/sn7woxoYCOz84TLU=";
+      }
+      {
+         name = "arm";
+         publisher = "dan-c-underwood";
+         version = "1.7.4";
+         sha256 = "sha256-gZBM980AoD+0wnfHXJK9sqCuuLtRY08JnO3Qdq/TRfc=";
+      }
     ];
 
     keybindings = [
