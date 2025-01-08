@@ -81,6 +81,7 @@
         enable = true;
         casks = [
           "proton-mail"
+          "proton-pass"
         ];
       };
 }
