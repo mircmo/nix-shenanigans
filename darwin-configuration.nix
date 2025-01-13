@@ -82,6 +82,7 @@
         casks = [
           "proton-mail"
           "proton-pass"
+          "proton-drive"
         ];
       };
 }
