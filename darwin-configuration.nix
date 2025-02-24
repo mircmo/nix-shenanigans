@@ -58,6 +58,11 @@
           experimental-features = "nix-command flakes";
         };
         
+        # Install rosetta with the following command: softwareupdate --install-rosetta --agree-to-license
+        extraOptions = ''
+          extra-platforms = x86_64-darwin aarch64-darwin
+        '';
+        
       };
       # Necessary for using flakes on this system.
 
